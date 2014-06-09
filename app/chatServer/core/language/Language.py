@@ -1,0 +1,30 @@
+#coding:utf8
+'''
+Created on 2014-1-20
+
+@author: CC
+'''
+from firefly.utils.singleton import Singleton
+from twisted.python import log
+from app.share.dbopear import dbLanguage
+
+class Lg:
+	'''翻译'''
+	__metaclass__=Singleton
+
+	def __init__(self):
+		'''初始化'''
+		self.info={}#key:表id, value:翻译之后的内容
+		self.info=dbLanguage.getAll()
+
+	def update(self):
+		'''更新数据信息'''
+		self.info=dbLanguage.geyAll()
+
+	def g(self,id):
+		'''根据id获取翻译信息'''
+		try:
+			return self.info.get(id)
+		except:
+			return str(id)
+			log.err("%s不存在"%id)
