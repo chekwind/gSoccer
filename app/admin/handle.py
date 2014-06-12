@@ -25,7 +25,7 @@ def operaGamer():
 	gate_node.callRemote("opera_gamer",pid,opera_str)
 	return "Success"
 
-@webserviceHandle('/dayrecored')
+@webserviceHandle('/dayrecord')
 def dayrecord():
 	'''获取每日的纪录'''
 	index=int(request.args['index'])
